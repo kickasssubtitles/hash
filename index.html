@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Movie Hashes</title>
+    <style>
+
+    body
+    {
+        font-family: Arial, sans-serif;
+    }
+
+    </style>
+</head>
+<body>
+
+    <h1>
+        Movie Hashes
+    </h1>
+
+    <form>
+        <input type="file" id="file" name="file">
+    </form>
+
+    <dl id="hashes"></dl>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/3.0.0/spark-md5.min.js"></script>
+<script src="hash.js"></script>
+<script>
+
+    MovieHashes.SparkMD5ArrayBufferFactory = function () {
+        return new SparkMD5.ArrayBuffer();
+    };
+
+    var calculate = function (file, provider) {
+        MovieHashes.browser[provider](file, function (f, hash) {
+            $('#hashes').append('<dt>' + provider + '</dt><dd>' + hash + '</dd>');
+        });
+    };
+
+    $('#file').change(function(){
+        var file = this.files[0];
+        for (var provider in MovieHashes.browser) {
+            calculate(file, provider);
+        }
+    });
+
+</script>
+
+</body>
+</html>

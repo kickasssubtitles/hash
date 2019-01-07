@@ -1,0 +1,25 @@
+{
+  "name": "hash",
+  "version": "1.0.0",
+  "title": "Hash",
+  "description": "Client-side (JavaScript in browser) hashing functions for various subtitle providers",
+  "keywords": [
+    "javascript",
+    "hash",
+    "subtitle"
+  ],
+  "homepage": "https://github.com/kickasssubtitles/hash",
+  "author": {
+    "name": "grzesw",
+    "url": "https://kickasssubtitles.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "~5.1.0"
+  },
+  "scripts": {
+    "cs": "eslint ./hash.js",
+    "csfix": "eslint ./hash.js --fix"
+  },
+  "main": "hash.js"
+}
