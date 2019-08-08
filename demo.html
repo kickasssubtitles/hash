@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Movie Hashes</title>
+    <title>Hash Demo</title>
     <style>
 
     body
@@ -15,7 +15,7 @@
 <body>
 
     <h1>
-        Movie Hashes
+        Hash
     </h1>
 
     <form>
@@ -29,19 +29,19 @@
 <script src="hash.js"></script>
 <script>
 
-    MovieHashes.SparkMD5ArrayBufferFactory = function () {
+    Hash.SparkMD5ArrayBufferFactory = function () {
         return new SparkMD5.ArrayBuffer();
     };
 
     var calculate = function (file, provider) {
-        MovieHashes.browser[provider](file, function (f, hash) {
+        Hash.browser[provider](file, function (f, hash) {
             $('#hashes').append('<dt>' + provider + '</dt><dd>' + hash + '</dd>');
         });
     };
 
     $('#file').change(function(){
         var file = this.files[0];
-        for (var provider in MovieHashes.browser) {
+        for (var provider in Hash.browser) {
             calculate(file, provider);
         }
     });
